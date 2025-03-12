@@ -1,9 +1,28 @@
-# Tree of Code Agents
+# Tree of Code Agent
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-Tree of Code (TOC) Agents est une plateforme avancée d'IA générative qui utilise une approche arborescente d'exploration pour créer, refactoriser, documenter et corriger du code de manière intelligente.
+Tree of Code (TOC) Agent est une plateforme avancée d'IA générative qui utilise une approche arborescente d'exploration pour créer, refactoriser, documenter et corriger du code de manière intelligente.
+
+**Tree-of-Code** est un cadre d'exploration arborescente conçu pour la génération et l'exécution de code de bout en bout dans la gestion de tâches complexes. citeturn0search0 Cette approche vise à améliorer la cohérence et la robustesse des agents basés sur des modèles de langage en explorant systématiquement différentes solutions sous forme d'arbre, chaque nœud représentant un programme de code exécutable.
+
+**Fonctionnement du cadre Tree-of-Code :**
+
+1. **Génération de la pensée et du code** : L'agent génère une stratégie de résolution sous forme de code exécutable.
+2. **Exécution** : Le code est exécuté dans un environnement sécurisé, et les résultats sont analysés.
+3. **Réflexion et expansion de l'arbre** : En fonction des résultats, l'agent réfléchit aux améliorations possibles et explore d'autres branches de l'arbre pour optimiser la solution.
+4. **Sélection du résultat final** : Les solutions exécutées avec succès sont évaluées, et l'agent détermine la réponse la plus appropriée en fonction des résultats obtenus.
+
+Cette approche permet aux agents de langage de réaliser des processus de décision délibérés en considérant plusieurs chemins de raisonnement, en évaluant les choix et en revenant en arrière si nécessaire pour résoudre efficacement des problèmes complexes. [arxiv](https://arxiv.org/html/2412.15305v1)
+
+**Avantages de l'approche Tree-of-Code :**
+
+- **Cohérence améliorée** : En générant des solutions de bout en bout, l'agent réduit les interruptions et les incohérences dans le processus de génération de code.
+- **Robustesse accrue** : L'exploration systématique de différentes solutions permet de minimiser les erreurs et d'améliorer la fiabilité des résultats.
+- **Efficacité** : En explorant plusieurs solutions en parallèle et en sélectionnant la meilleure, l'agent optimise le temps et les ressources nécessaires à la résolution de tâches complexes.
+
+En somme, le cadre Tree-of-Code représente une avancée significative dans l'utilisation des modèles de langage pour la génération et l'exécution de code, offrant une approche structurée et efficace pour la gestion de tâches complexes. 
 
 ## Fonctionnalités
 
