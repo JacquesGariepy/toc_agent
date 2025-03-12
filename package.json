@@ -1,0 +1,23 @@
+{
+  "name": "tree-of-code-frontend",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lucide-react": "^0.479.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-syntax-highlighter": "^15.6.1",
+    "react-use-websocket": "^4.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "framer-motion": "^12.4.11",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.12",
+    "vite": "^4.0.0"
+  }
+}
