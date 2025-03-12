@@ -1,0 +1,17 @@
+{
+  "model": "gpt-4o-mini",
+  "max_tree_depth": 10,
+  "max_iterations_per_node": 2,
+  "code_execution_timeout": 10,
+  "temperature": 0.9,
+  "max_tokens": 1024,
+  "logs_dir": "..\\logs",
+  "cache_dir": "..\\.toc_cache",
+  "memory_db": "..\\db\\memory.sqlite",
+  "use_sqlite_memory": true,
+  "max_retries": 100,
+  "thread_pool_size": 100,
+  "use_docker": true,
+  "memory_max_size_mb": 10000,
+  "plugins_dir": "plugins"
+}

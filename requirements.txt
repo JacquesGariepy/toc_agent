@@ -1,0 +1,11 @@
+colorama
+docker
+duckduckgo-search
+fastapi
+joblib
+openai
+pydantic
+python-multipart
+tenacity
+uvicorn
+uvicorn[standard]

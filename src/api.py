@@ -10,7 +10,7 @@ import os
 import shutil
 
 # Import de l'orchestrateur de l'agent
-from main3 import UnifiedAgentOrchestrator
+from agent import UnifiedAgentOrchestrator
 
 app = FastAPI(title="Tree-of-Code API")
 app.add_middleware(

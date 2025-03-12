@@ -3,7 +3,8 @@
 """
 Tree-of-Code Agent
 """
-
+from abc import ABC, abstractmethod
+from typing import Any, Dict, Callable, List, Optional
 import importlib
 import os
 import sys
@@ -13,10 +14,10 @@ import logging
 import tempfile
 import shutil
 import subprocess
+import argparse
 import asyncio
 import sqlite3
 import hashlib
-from functools import lru_cache
 from collections import deque
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
@@ -27,10 +28,14 @@ import inspect
 import openai  # pip install openai
 from colorama import Fore, Style, init
 from joblib import Memory  # pip install joblib
-import dill
+#import dill
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
-from pydantic import BaseModel    
+#from pydantic import BaseModel    
 from typing import Optional
+
+import docker
+from docker.errors import DockerException
+
 # Initialize Colorama and Logging
 init(autoreset=True)
 logging.basicConfig(
@@ -167,8 +172,6 @@ class TreeNode:
 # -------------------------
 # Docker Executor
 # -------------------------
-import docker
-from docker.errors import DockerException
 
 class DockerExecutor:
     def __init__(self):
@@ -213,8 +216,6 @@ class DockerExecutor:
 # -------------------------
 # Plugin Base & Manager
 # -------------------------
-from abc import ABC, abstractmethod
-from typing import Any, Dict, Callable, List, Optional
 
 class Plugin(ABC):
     name: str = "base_plugin"
@@ -1806,7 +1807,7 @@ class UnifiedAgentOrchestrator:
                 return engine.root
 
 def main():
-    import argparse
+
     parser = argparse.ArgumentParser(description="Tree-of-Code CLI with File Processing")
     
     # Base arguments

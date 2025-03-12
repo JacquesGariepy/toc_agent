@@ -7,7 +7,14 @@
 
 ```
 python -m venv env
+```
+#### For Linux and MacOS
+```
 source env/bin/activate
+```
+#### For Windows
+```
+env\Scripts\activate
 ```
 
 2. Install dependencies
@@ -15,7 +22,7 @@ source env/bin/activate
 ```
 npm install
 npm init -y
-pip 
+pip install -r requirements.txt 
 
 ```
 
