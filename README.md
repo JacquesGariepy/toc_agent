@@ -13,8 +13,10 @@ source env/bin/activate
 2. Install dependencies
 
 ```
-python -m venv env
-source env/bin/activate
+npm install
+npm init -y
+pip 
+
 ```
 
 3. Run system
