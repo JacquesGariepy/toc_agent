@@ -4,3 +4,4 @@ node_modules/*
 dist/*
 src/__pycache__/*
 package-lock.json
+logs/.toc_cache/*

@@ -47,6 +47,17 @@ Le système est composé de deux composants principaux :
   - Communication WebSockets pour les mises à jour en temps réel
   - Système de plugins extensible (exemple: plugin DuckDuckGo pour la recherche)
 
+### Example
+![example](img/image.png)("max_tree_depth": 2,
+  "max_iterations_per_node": 2)
+
+![alt](img/image-1.png)
+
+![alt](img/image-2.png)
+
+![alt](img/image3.png) ("max_tree_depth": 10,
+  "max_iterations_per_node": 2)
+
 - **Frontend React** : 
   - Interface utilisateur réactive basée sur React et Framer Motion
   - Design moderne avec thème clair/sombre
@@ -385,10 +396,3 @@ Les contributions sont les bienvenues ! Voici comment vous pouvez contribuer :
 
 Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
-## Remerciements
-
-- OpenAI pour leur API GPT
-- React et Framer Motion pour l'interface utilisateur
-- FastAPI pour l'API backend et les WebSockets
-- Docker pour l'exécution sécurisée du code
-- DuckDuckGo pour l'API de recherche utilisée dans le plugin
