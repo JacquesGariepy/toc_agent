@@ -244,6 +244,68 @@ Tree of Code utilise une approche d'exploration arborescente pour générer et a
 7. **Documentation** : Une documentation complète est générée
 8. **Visualisation** : Une visualisation HTML de l'arbre d'exploration est créée
 
+## Exécution sécurisée avec Docker
+
+Un aspect essentiel de Tree of Code est l'exécution sécurisée du code généré par l'IA pour chaque nœud de l'arbre d'exploration.
+
+### Pourquoi Docker?
+
+L'exécution de code généré par une IA présente des risques potentiels :
+- Exécution accidentelle de code malveillant
+- Accès non autorisé au système de fichiers
+- Opérations consommant trop de ressources
+- Problèmes de sécurité liés à l'exécution de code non vérifié
+
+### Processus d'exécution en sandbox
+
+Pour chaque nœud de l'arbre, le système suit ce processus :
+
+1. **Isolement** : Le code généré est placé dans un conteneur Docker isolé basé sur l'image `python:3.9`
+2. **Limitation des ressources** : Restrictions strictes sur la mémoire, le CPU et le temps d'exécution
+3. **Pas d'accès réseau** : Le conteneur n'a pas accès au réseau externe
+4. **Système de fichiers en lecture seule** : Prévient les modifications non autorisées
+5. **Timeout** : L'exécution est limitée par défaut à 10 secondes (configurable)
+6. **Capture des résultats** : Les sorties stdout/stderr et le code de retour sont capturés
+7. **Nettoyage** : Le conteneur est détruit après l'exécution
+
+### Implémentation technique
+
+```python
+def execute_code(self, code: str, timeout: int = 10) -> ExecutionResult:
+    use_docker = os.environ.get("USE_DOCKER", "true").lower() == "true"
+    if use_docker:
+        try:
+            docker_executor = DockerExecutor()
+            output = docker_executor.execute_code(code, image="python:3.9")
+            return ExecutionResult(stdout=output, stderr="", execution_time=0.0, exit_code=0)
+        except Exception as e:
+            logger.error(f"Error during Docker code execution: {str(e)}")
+            return ExecutionResult(stdout="", stderr=f"Docker execution error: {str(e)}", execution_time=0.0, exit_code=1)
+```
+
+### Mode de secours (fallback)
+
+Si Docker n'est pas disponible ou désactivé via la variable d'environnement `USE_DOCKER=false`, le système revient à une exécution locale plus limitée :
+
+```python
+else:
+    temp_dir = tempfile.mkdtemp(prefix="toc_node_")
+    code_file = os.path.join(temp_dir, "solution.py")
+    try:
+        with open(code_file, "w", encoding="utf-8") as f:
+            f.write(code)
+        # Exécution avec timeout et autres restrictions
+        # ...
+```
+
+### Évaluation des résultats
+
+Les résultats de l'exécution sont utilisés pour :
+1. **Évaluer le succès** : Déterminer si le code a réussi à résoudre le problème
+2. **Générer une réflexion** : Analyser les sorties pour comprendre les échecs
+3. **Guider l'exploration** : Orienter l'IA vers de meilleures solutions dans les nœuds enfants
+4. **Visualiser les résultats** : Afficher les résultats d'exécution dans la visualisation HTML
+
 ## Configuration avancée
 
 Vous pouvez personnaliser le comportement du système en modifiant les paramètres dans votre fichier `.env` :
@@ -253,6 +315,8 @@ MAX_TREE_DEPTH=3          # Profondeur maximale de l'arbre d'exploration
 MAX_ITERATIONS_PER_NODE=2 # Nombre d'itérations par nœud
 THREAD_POOL_SIZE=4        # Taille du pool de threads pour le traitement parallèle
 CODE_EXECUTION_TIMEOUT=10 # Timeout pour l'exécution du code (en secondes)
+DOCKER_MEMORY_LIMIT=512m  # Limite de mémoire pour le conteneur Docker
+DOCKER_CPU_LIMIT=1.0      # Limite de CPU pour le conteneur Docker
 ```
 
 ## Dépannage
