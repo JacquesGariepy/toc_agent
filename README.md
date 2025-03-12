@@ -1,5 +1,25 @@
-# toc_agents
-Three of Code Agent
+# Three of Code Agent
+## Get started
+### Set up your Python environment
+## Get started
 
-npm run dev  
-uvicorn api:app --reload
+1. Set up your Python environment
+
+```
+python -m venv env
+source env/bin/activate
+```
+
+2. Install dependencies
+
+```
+python -m venv env
+source env/bin/activate
+```
+
+3. Run system
+
+```
+npm run dev
+cd src ; uvicorn api:app 
+```
