@@ -58,7 +58,10 @@ Le système est composé de deux composants principaux :
 
 - Python 3.9+
 - Node.js 14+
-- Docker (optionnel, pour l'exécution sécurisée)
+- Docker
+  - Sur Windows: Docker Desktop doit être installé et en cours d'exécution
+  - Sur macOS: Docker Desktop
+  - Sur Linux: Service Docker
 - Clé API OpenAI
 
 ## Installation
@@ -90,7 +93,14 @@ pip install -r requirements.txt
 npm install
 ```
 
-### 3. Configuration des variables d'environnement
+### 3. Configuration de Docker
+
+Assurez-vous que Docker est installé et en cours d'exécution :
+- Sur Windows : Lancez Docker Desktop depuis le menu démarrer
+- Sur macOS : Lancez Docker Desktop depuis les Applications
+- Sur Linux : Vérifiez que le service Docker est actif avec `sudo systemctl status docker`
+
+### 4. Configuration des variables d'environnement
 
 Créez un fichier `.env` à la racine du projet avec le contenu suivant :
 

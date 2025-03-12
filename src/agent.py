@@ -56,7 +56,7 @@ DEFAULT_MEMORY_DB = r"..\db\memory.sqlite"  # Global SQLite database file
 def load_config(config_path: Optional[str] = None) -> dict:
     default_config = {
         "model": "gpt-4o-mini",
-        "max_tree_depth": 10,
+        "max_tree_depth": 2,
         "max_iterations_per_node": 2,
         "code_execution_timeout": 10,
         "temperature": 0.9,
@@ -673,8 +673,6 @@ class LLMClient:
         self.max_tokens = max_tokens
         logger.info(f"LLMClient initialized with model {model}, cache in {cache_dir}")
 
-    @retry(retry=retry_if_exception_type((openai.APIError, openai.RateLimitError, openai.Timeout)),
-           stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=1, max=10))
     def _raw_request(self, prompt: str, system_message: str = "You are a code generation assistant.") -> str:
         try:
             response = openai.chat.completions.create(
